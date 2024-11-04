@@ -18,6 +18,23 @@ public class FirstProgram extends Application {
         Graph<Character, Integer> g = new GraphEdgeList<>();
 
         // TODO: create graph structure
+        g.insertVertex('f');
+        g.insertVertex('g');
+        g.insertVertex('e');
+        g.insertVertex('d');
+        g.insertVertex('c');
+        g.insertVertex('b');
+        g.insertVertex('a');
+
+        g.insertEdge('f','g',8);
+        g.insertEdge('g','e',50);
+        g.insertEdge('e','d',10);
+        g.insertEdge('f','d',22);
+        g.insertEdge('d','c',30);
+        g.insertEdge('c','b',2);
+        g.insertEdge('g','a',11);
+        g.insertEdge('a','b',6);
+
 
         ///////////////////////////////////////////////////////////////////////////////////////
         // STUDENTS -> NOTHING TO DO BELOW THIS LINE

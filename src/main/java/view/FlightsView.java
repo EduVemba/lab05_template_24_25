@@ -59,8 +59,16 @@ public class FlightsView extends BorderPane {
     private void createInitialModel() {
         // TODO: create flight model - Figure of assignment
 
-        // Vertex<Airport> sfo = graph.insertVertex(new Airport("SFO"));
-        // ...
+        Vertex<Airport> hnl = graph.insertVertex(new Airport("HNL"));
+        Vertex<Airport> lax = graph.insertVertex(new Airport("LAX"));
+        Vertex<Airport> sfo = graph.insertVertex(new Airport("SFO"));
+        Vertex<Airport> ord = graph.insertVertex(new Airport("ORD"));
+        Vertex<Airport> dfw = graph.insertVertex(new Airport("DFW"));
+        Vertex<Airport> lga = graph.insertVertex(new Airport("LGA"));
+        Vertex<Airport> pvd = graph.insertVertex(new Airport("PVD"));
+        Vertex<Airport> mia = graph.insertVertex(new Airport("MIA"));
+
+
     }
 
     private void addAirport(String airportCode) {
