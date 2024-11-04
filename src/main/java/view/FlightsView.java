@@ -68,33 +68,65 @@ public class FlightsView extends BorderPane {
         Vertex<Airport> pvd = graph.insertVertex(new Airport("PVD"));
         Vertex<Airport> mia = graph.insertVertex(new Airport("MIA"));
 
+        // Create Flight
+        graph.insertEdge(hnl, lax, new Flight("UN3563", 2555));
+        graph.insertEdge(hnl, sfo, new Flight("DT1597", 2555));
+        graph.insertEdge(sfo, hnl, new Flight("UN9375", 337));
+        graph.insertEdge(sfo, lax, new Flight("AM4526", 337));
+        graph.insertEdge(sfo, ord, new Flight("UN4836", 1743));
+        graph.insertEdge(lax, ord, new Flight("VA2001", 1743));
+        graph.insertEdge(ord, sfo, new Flight("UN1475", 1843));
+        graph.insertEdge(ord, lax, new Flight("AL7854", 1843));
+        graph.insertEdge(lax, dfw, new Flight("SP1020", 1233));
+        graph.insertEdge(dfw, ord, new Flight("AM4582", 1233));
+        graph.insertEdge(ord, dfw, new Flight("UN4568", 802));
+        graph.insertEdge(dfw, lga, new Flight("SP4512", 1387));
+        graph.insertEdge(lga, pvd, new Flight("AM4520", 849));
+        graph.insertEdge(ord, pvd, new Flight("UN7812", 849));
+        graph.insertEdge(pvd, mia, new Flight("FT1000", 1205));
+        graph.insertEdge(lga, mia, new Flight("FT4021", 1099));
+        graph.insertEdge(mia, dfw, new Flight("AM1026", 1099));
+        graph.insertEdge(dfw, mia, new Flight("AM5267", 1120));
+
+        graph.insertEdge(hnl,lax, new Flight("F1",2555));
+        graph.insertEdge(lax,hnl, new Flight("F2",2555));
+        graph.insertEdge(sfo,ord, new Flight("F3",2555));
+        graph.insertEdge(ord,dfw, new Flight("F4",2555));
+        graph.insertEdge(dfw,lga, new Flight("F5",2555));
+        graph.insertEdge(lga,pvd, new Flight("F6",2555));
+        graph.insertEdge(pvd,mia, new Flight("F7",2555));
+
 
     }
 
     private void addAirport(String airportCode) {
-        // TODO: implement, check for errors and use showError(message) in case of error
-        //  code must be valid, i.e., not empty
-
-        showError("Not implemented yet!");
+       if (airportCode.isEmpty()) {
+           showError("Airport code cannot be empty");
+       }
     }
 
     private void addFlight(Vertex<Airport> vertexFrom, Vertex<Airport> vertexTo, String code, String distance) {
-        // TODO: implement, check for errors and use showError(message) in case of error
-        //  Cannot add flights with the same airport as inbound/outbound
+        if (code.isEmpty() || vertexFrom == null || vertexTo == null || distance.isEmpty()) {
+            showError("Airport code or flight code cannot be empty");
+        }
+        Flight flight = new Flight(code,Double.parseDouble(distance));
+        graph.insertEdge(vertexFrom, vertexTo, flight);
 
-        showError("Not implemented yet!");
     }
 
     private void removeFlight(Edge<Flight, Airport> edge) {
-        // TODO: implement, check for errors and use showError(message) in case of error
+        if (edge == null) {
+            showError("Not implemented yet!");
+        }
+        graph.removeEdge(edge);
 
-        showError("Not implemented yet!");
     }
 
     private void removeAirport(Vertex<Airport> vertex) {
-        // TODO: implement, check for errors and use showError(message) in case of error
-
-        showError("Not implemented yet!");
+        if (vertex == null) {
+            showError("Not implemented yet!");
+        }
+        graph.removeVertex(vertex);
     }
 
     private void updateStatistics() {
